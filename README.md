@@ -23,7 +23,7 @@ Developed and validated against field data from a **VECV commercial electric bus
 | RMSE | — | 3.82% | < 1.5% |
 | MAE  | — | 3.31% | < 1.2% |
 | Positive bias | ~40% flat | +3–4% drift | < 1% |
-| Runtime (optimization) | — | ~2 hrs ❌ | ~3 min ✅ |
+| Runtime (optimization) | — | ~2 hrs  | ~3 min  |
 
 > **Note:** The BMS reference SOC is an integer-resolution staircase (1% steps), not a ground truth. The EKF continuous estimate is arguably more physically accurate.
 
@@ -215,8 +215,7 @@ See [`simulink/README_simulink.md`](simulink/README_simulink.md) for the complet
 
 ## Author
 
-**Chaitanya** — Deputy Manager, Battery Systems Engineering  
-Volvo Eicher Commercial Vehicles (VECV)  
+**Chaitanya** — Deputy Manager, Battery Systems Engineering   
 M.Tech Design Engineering, BITS Pilani
 
 ---

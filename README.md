@@ -205,11 +205,11 @@ See [`simulink/README_simulink.md`](simulink/README_simulink.md) for the complet
 
 ## Roadmap
 
-- [ ] Simulink model (`slx`) with Stateflow state machine
-- [ ] SOH estimation via online resistance tracking (RLS)
-- [ ] SOP estimation (power limit prediction)
-- [ ] Multi-temperature OCV characterisation workflow
-- [ ] Python port (NumPy/SciPy)
+- [1] Simulink model (`slx`) with Stateflow state machine
+- [2] SOH estimation via online resistance tracking (RLS)
+- [3] SOP estimation (power limit prediction)
+- [4] Multi-temperature OCV characterisation workflow
+- [5] Python port (NumPy/SciPy)
 
 ---
 

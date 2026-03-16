@@ -9,9 +9,9 @@
 %     Using 120 scaled the OCV table 11% too high, pushing EKF SOC
 %     systematically positive. This is the dominant source of bias.
 %
-%   FIX B — Q_capacity was WRONG (105 Ah → ~89 Ah from data)
+%   FIX B — Q_capacity was WRONG (105 Ah coded, actual ~88.7 Ah, nameplate = 90 Ah)
 %     Integrating signed current: net discharge = 39 Ah over 44% ΔSOC
-%     → implied Q = 88.7 Ah (pack is at ~84% SOH vs 105 Ah nameplate).
+%     → implied Q = 88.7 Ah from this dataset (pack at ~84% SOH vs 90 Ah nameplate).
 %     With 105 Ah coded, CC discharged SOC 18% too slowly → positive bias.
 %
 %   FIX C — Optimization was taking 2+ hrs → never converged
@@ -91,9 +91,9 @@ Q_capacity        = Q_implied * 3600;       % [A·s]
 
 fprintf('=== Pack Configuration (auto-detected) ===\n');
 fprintf('  n_series:     %d  (v1/v2 used 120 — wrong)\n', n_series);
-fprintf('  Q_capacity:   %.1f Ah  (v1/v2 used 105 Ah — %.0f%% error)\n', ...
+fprintf('  Q_capacity:   %.1f Ah  (v1/v2 used 105 Ah — your cell rated capacity is 90 Ah — %.0f%% error)\n', ...
         Q_implied, abs(Q_implied-105)/105*100);
-fprintf('  SOH estimate: %.0f%%  (vs 105 Ah nameplate)\n', Q_implied/105*100);
+fprintf('  SOH estimate: %.0f%%  (vs 90 Ah nameplate)\n', Q_implied/90*100);
 fprintf('  dt = %.3f s  |  N = %d  |  Duration = %.1f s\n\n', dt, N, time(end));
 
 %% ============================================================

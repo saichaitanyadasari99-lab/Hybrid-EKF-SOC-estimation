@@ -4,7 +4,7 @@
 
 ---
 
-## Overview
+## Overview 
 
 This project implements a **production-grade hybrid SOC estimator** combining:
 

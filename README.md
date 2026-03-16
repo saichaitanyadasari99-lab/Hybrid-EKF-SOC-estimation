@@ -12,7 +12,7 @@ This project implements a **production-grade hybrid SOC estimator** combining:
 - **Coulomb Counting (CC)** — integrates signed current for real-time SOC tracking; dominates in the flat LFP plateau where voltage carries negligible SOC information
 - **Adaptive fusion** — the CC weight increases in the plateau region where `dOCV/dSOC` is near zero; EKF voltage corrections dominate on the slopes
 
-Developed and validated against field data from a **VECV commercial electric bus** (108S1P LFP, ~89 Ah usable capacity at 84% SOH).
+Developed and validated against field data from a **VECV commercial electric bus** (108S1P LFP, 90 Ah usable capacity at ~84% SOH).
 
 ---
 
@@ -45,7 +45,7 @@ This estimator was developed iteratively on real vehicle data. The diagnostic jo
 | # | Bug | Root Cause | Effect |
 |---|-----|-----------|--------|
 | A | n_series = 120, should be 108 | `pack_V / avg_cell_V = 397/3.683 = 107.8` | OCV table scaled 11% too high → systematic +3% SOC bias |
-| B | Q = 105 Ah, actual ~89 Ah | Pack at ~84% SOH; CC underestimated discharge by 18% | SOC drifted high throughout |
+| B | Q = 90 Ah, actual 90 Ah | Pack at ~~84% SOH; CC underestimated discharge by 18% | SOC drifted high throughout |
 | C | Optimization over 72k pts | `fminsearch` with `interp2` inside loop = ~10M calls | 2+ hr runtime, optimizer never converged, bad R0/R1/C1 |
 
 **Key lesson:** Always verify `n_series` from `V_pack / V_cell_avg` before coding the OCV table. Always compute `Q_capacity` from `∫I·dt / ΔSOC` on real data before assuming nameplate.
@@ -215,7 +215,8 @@ See [`simulink/README_simulink.md`](simulink/README_simulink.md) for the complet
 
 ## Author
 
-**Chaitanya** — Deputy Manager, Battery Systems Engineering   
+**Chaitanya** — Deputy Manager, Battery Systems Engineering  
+Volvo Eicher Commercial Vehicles (VECV)  
 M.Tech Design Engineering, BITS Pilani
 
 ---
